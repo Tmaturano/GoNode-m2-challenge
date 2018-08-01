@@ -6,6 +6,7 @@ const authMiddleware = require('./middlewares/auth');
 const guestMiddleware = require('./middlewares/guest');
 
 const authController = require('./controllers/authController');
+const dashboardController = require('./controllers/dashboardController');
 
 // Flash Middleware
 routes.use((req, res, next) => {
@@ -28,7 +29,7 @@ routes.post('/authenticate', authController.authenticate);
  * Dashboard
  */
 routes.use('/app', authMiddleware);
-// routes.get('/app/dashboard', dashboardController.index);
+routes.get('/app/dashboard', dashboardController.index);
 
 
 routes.use((req, res) => res.render('errors/404'));
