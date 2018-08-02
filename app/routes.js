@@ -8,6 +8,7 @@ const guestMiddleware = require('./middlewares/guest');
 const authController = require('./controllers/authController');
 const dashboardController = require('./controllers/dashboardController');
 const projectController = require('./controllers/projectController');
+const sectionController = require('./controllers/sectionController');
 
 // Flash Middleware
 routes.use((req, res, next) => {
@@ -36,6 +37,12 @@ routes.get('/app/dashboard', dashboardController.index);
  * Projects
  */
 routes.post('/app/projects/create', projectController.store);
+routes.get('/app/projects/:id/show', projectController.show);
+
+/**
+ * Sections
+ */
+routes.get('/app/projects/:id/show/section/:sectionId', sectionController.show);
 
 
 routes.use((req, res) => res.render('errors/404'));

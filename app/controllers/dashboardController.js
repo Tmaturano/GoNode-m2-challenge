@@ -7,6 +7,9 @@ module.exports = {
         where: {
           UserId: req.session.user.id,
         },
+        order: [
+          ['title', 'ASC'],
+        ],
       });
 
       return res.render('dashboard/index', {

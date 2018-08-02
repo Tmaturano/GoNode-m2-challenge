@@ -1,5 +1,5 @@
 const validator = require('validator');
-const { Project } = require('../models');
+const { Project, Section } = require('../models');
 
 module.exports = {
   async store(req, res, next) {
@@ -18,6 +18,24 @@ module.exports = {
 
       req.flash('success', `O projeto ${title} foi criado com sucesso`);
       return res.redirect('/');
+    } catch (err) {
+      return next(err);
+    }
+  },
+
+  async show(req, res, next) {
+    try {
+      const project = await Project.findOne({
+        include: [Section],
+        where: {
+          id: req.params.id,
+        },
+      });
+
+      return res.render('projects/show', {
+        project,
+        activeSection: 1,
+      });
     } catch (err) {
       return next(err);
     }

@@ -21,7 +21,7 @@
         <section id="content">
           <div class="project-list">
             {% for project in projects %}
-              <a href="#">{{ project.title }}</a>
+              <a href="/app/projects/{{ project.id }}/show">{{ project.title }}</a>
             {% endfor %}
           </div>
         </section>
