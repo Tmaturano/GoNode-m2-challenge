@@ -32,9 +32,17 @@ module.exports = {
         },
       });
 
+      let firstSectionId = 0;
+      let selectedSection;
+      if (project.Sections.length > 0) {
+        firstSectionId = project.Sections[0].id;
+        selectedSection = await Section.findById(firstSectionId);
+      }
+
       return res.render('projects/show', {
         project,
-        activeSection: 1,
+        selectedSection,
+        activeSection: firstSectionId,
       });
     } catch (err) {
       return next(err);

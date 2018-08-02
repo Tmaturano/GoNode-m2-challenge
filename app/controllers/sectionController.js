@@ -1,18 +1,25 @@
-const { Section } = require('../models');
+const { Section, Project } = require('../models');
 
 module.exports = {
   async show(req, res, next) {
     try {
-      const project = await Section.findOne({
+      const { sectionId, id } = req.params;
+
+      // const section = await Section.findById(sectionId);
+
+      const project = await Project.findOne({
         include: [Section],
         where: {
-          id: req.params.id,
+          id,
         },
       });
 
+      const selectedSection = await Section.findById(sectionId);
+
       return res.render('projects/show', {
         project,
-        activeSection: req.params.sectionId,
+        selectedSection,
+        activeSection: sectionId,
       });
     } catch (err) {
       return next(err);
