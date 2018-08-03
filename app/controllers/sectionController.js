@@ -62,4 +62,15 @@ module.exports = {
       return next(err);
     }
   },
+
+  async remove(req, res, next) {
+    try {
+      await Section.destroy({ where: { id: req.params.sectionId } });
+
+      req.flash('success', 'Seção deletada com sucesso');
+      return res.redirect(`/app/projects/${req.params.id}/show/section/0`);
+    } catch (err) {
+      return next(err);
+    }
+  },
 };

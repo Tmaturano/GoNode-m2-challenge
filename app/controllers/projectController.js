@@ -48,4 +48,15 @@ module.exports = {
       return next(err);
     }
   },
+
+  async remove(req, res, next) {
+    try {
+      await Project.destroy({ where: { id: req.params.id } });
+
+      req.flash('success', 'Projeto deletado com sucesso');
+      return res.redirect('/');
+    } catch (err) {
+      return next(err);
+    }
+  },
 };

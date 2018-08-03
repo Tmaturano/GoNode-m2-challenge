@@ -53,6 +53,11 @@ input:focus, textarea:focus {
   background: #D05959;
 }
 
+
+.btn.btn-edit {
+  background: white;
+}
+
 .auth-wrapper {
   height: 100%;
   display: flex;

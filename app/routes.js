@@ -38,6 +38,7 @@ routes.get('/app/dashboard', dashboardController.index);
  */
 routes.post('/app/projects/create', projectController.store);
 routes.get('/app/projects/:id/show', projectController.show);
+routes.delete('/app/projects/:id', projectController.remove);
 
 /**
  * Sections
@@ -45,6 +46,7 @@ routes.get('/app/projects/:id/show', projectController.show);
 routes.get('/app/projects/:id/show/section/:sectionId', sectionController.show);
 routes.post('/app/projects/:id/section/create', sectionController.store);
 routes.put('/app/projects/:id/section/:sectionId', sectionController.update);
+routes.delete('/app/projects/:id/section/:sectionId', sectionController.remove);
 
 routes.use((req, res) => res.render('errors/404'));
 

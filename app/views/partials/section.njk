@@ -2,10 +2,19 @@
   {% if selectedSection !== undefined %}
     <div class="project-header">
       <h1>{{ selectedSection.title }}</h1>
-      <div class="edit-section">
-        <a href="#" data-modal-open="#modal-edit-section">Editar</a>
-      </div>
-      <a href="">Remover</a>
+
+      {% if selectedSection.id == activeSection %}
+        <div class="edit-section">
+          <a href="#" data-modal-open="#modal-edit-section" class="btn btn-edit" title="Editar Seção">
+            <i class="far fa-edit"></i>
+          </a>
+        </div>
+        <form action="/app/projects/{{ project.id }}/section/{{ selectedSection.id }}?_method=DELETE" method="POST">
+          <button type="submit" class="btn btn-danger" title="Apagar Seção">
+            <i class="fas fa-trash"></i>
+          </button>
+        </form>
+      {% endif %}
     </div>
     <p>{{ selectedSection.formattedContent | safe }}</p>
   {% endif %}
