@@ -43,7 +43,8 @@ routes.get('/app/projects/:id/show', projectController.show);
  * Sections
  */
 routes.get('/app/projects/:id/show/section/:sectionId', sectionController.show);
-
+routes.post('/app/projects/:id/section/create', sectionController.store);
+routes.put('/app/projects/:id/section/:sectionId', sectionController.update);
 
 routes.use((req, res) => res.render('errors/404'));
 
