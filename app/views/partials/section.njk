@@ -7,7 +7,7 @@
       </div>
       <a href="">Remover</a>
     </div>
-    <p>{{ selectedSection.content }}</p>
+    <p>{{ selectedSection.formattedContent | safe }}</p>
   {% endif %}
 </article>
 
